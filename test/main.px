@@ -1,0 +1,3 @@
+val helloVal = "hello\""
+val intVal = 123_456
+val floatVal = 123_456.789
