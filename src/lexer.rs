@@ -50,6 +50,26 @@ impl Lexer {
 
                 Token::new(TokenKind::Assign, "=".to_owned())
             }
+            '+' => {
+                self.read();
+
+                Token::new(TokenKind::Plus, "+".to_owned())
+            }
+            '*' => {
+                self.read();
+
+                Token::new(TokenKind::Multiply, "*".to_owned())
+            }
+            '-' => {
+                self.read();
+
+                Token::new(TokenKind::Minus, "-".to_owned())
+            }
+            '/' => {
+                self.read();
+
+                Token::new(TokenKind::Divide, "/".to_owned())
+            }
             '"' => {
                 self.read();
 

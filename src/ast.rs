@@ -9,5 +9,14 @@ pub enum Expression {
     String(String),
     Integer(i64),
     Float(f64),
-    Identifier(String),
+
+    Binary(Box<Expression>, BinaryOperator, Box<Expression>),
+}
+
+#[derive(Debug)]
+pub enum BinaryOperator {
+    Plus,
+    Multiply,
+    Minus,
+    Divide,
 }

@@ -1,14 +1,19 @@
 #[derive(Debug)]
 pub enum TokenKind {
     Identifier, // variable name
-    Assign, // =
+    Assign,     // =
 
     Val, // constant value (const)
     Var, // variable (let)
 
-    String, // "Hello, World!"
+    String,  // "Hello, World!"
     Integer, // 123 / 123_456
-    Float, // 123.456 / 123_456.789
+    Float,   // 123.456 / 123_456.789
+
+    Plus,
+    Multiply,
+    Minus,
+    Divide,
 }
 
 #[derive(Debug)]
