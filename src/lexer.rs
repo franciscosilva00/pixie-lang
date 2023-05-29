@@ -22,7 +22,7 @@ impl Lexer {
 
         s.char = s.source[s.current];
 
-        return s;
+        s
     }
 
     fn read(&mut self) {
@@ -109,6 +109,8 @@ impl Lexer {
                 let kind = match buffer.as_str() {
                     "val" => TokenKind::Val,
                     "var" => TokenKind::Var,
+                    "true" => TokenKind::True,
+                    "false" => TokenKind::False,
                     _ => TokenKind::Identifier,
                 };
 

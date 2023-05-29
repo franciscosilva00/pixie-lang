@@ -91,30 +91,34 @@ impl Parser {
                 kind: TokenKind::String,
                 literal,
             }) => Expression::String(literal),
+            Some(Token {
+                kind: TokenKind::True,
+                literal,
+            }) => Expression::Boolean(literal.parse().unwrap()),
+            Some(Token {
+                kind: TokenKind::False,
+                literal,
+            }) => Expression::Boolean(literal.parse().unwrap()),
             _ => unimplemented!(),
         };
 
-        loop {
-            let infix = if let Some(infix) = self.lexer.peek() {
-                infix
-            } else {
-                break;
-            };
-
+        while let Some(infix) = self.lexer.peek() {
+            let infix = infix;
+            
             if let Some((lbp, rbp)) = infix_binding_power(infix.kind) {
                 if lbp < bp {
                     break;
                 }
-
+                
                 let op = self.lexer.next().unwrap().kind;
-
+                
                 let rhs = self.parse_expression(rbp);
-
+                
                 lhs = make_infix_expression(lhs, op, rhs);
-
+                
                 continue;
             }
-
+            
             break;
         }
 
